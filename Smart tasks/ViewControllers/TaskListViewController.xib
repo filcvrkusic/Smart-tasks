@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24127" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24063"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TaskListViewController" customModule="Smart_tasks" customModuleProvider="target">
+            <connections>
+                <outlet property="activityIndicator" destination="jKP-hI-FV3" id="eVj-rB-WlW"/>
+                <outlet property="dayLabel" destination="Ifx-9Y-eoH" id="zNL-Lo-Z8U"/>
+                <outlet property="nextDayButton" destination="cFr-Bn-uNd" id="3k5-CN-ujK"/>
+                <outlet property="previousDayButton" destination="pTD-CX-wKp" id="lKG-ux-Sdw"/>
+                <outlet property="tableView" destination="cK0-UB-uhM" id="GyY-OZ-bKw"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ifx-9Y-eoH">
+                    <rect key="frame" x="165.33333333333334" y="148.66666666666666" width="62.333333333333343" height="28.666666666666657"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cFr-Bn-uNd">
+                    <rect key="frame" x="343" y="138" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="dEo-iR-Ymn"/>
+                        <constraint firstAttribute="width" constant="50" id="jI6-VN-egG"/>
+                    </constraints>
+                    <buttonConfiguration key="configuration" style="plain" image="Arrow forward" title=""/>
+                    <connections>
+                        <action selector="nextDayTapped:" destination="-1" eventType="touchUpInside" id="3wE-Ys-PCK"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pTD-CX-wKp">
+                    <rect key="frame" x="0.0" y="138" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="OMb-FD-x2g"/>
+                        <constraint firstAttribute="height" constant="50" id="xwu-hj-mQX"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" image="Arrow back" title=""/>
+                    <connections>
+                        <action selector="previousDayTapped:" destination="-1" eventType="touchUpInside" id="b5r-01-RCV"/>
+                    </connections>
+                </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="cK0-UB-uhM">
+                    <rect key="frame" x="10" y="208" width="373" height="586"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="jKP-hI-FV3">
+                    <rect key="frame" x="164" y="393.66666666666669" width="65" height="65"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="65" id="8Dj-0V-vxj"/>
+                        <constraint firstAttribute="width" constant="65" id="GfH-OE-jYy"/>
+                    </constraints>
+                </activityIndicatorView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" red="1" green="0.87058823529411766" blue="0.38039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Ifx-9Y-eoH" firstAttribute="centerY" secondItem="pTD-CX-wKp" secondAttribute="centerY" id="Ah0-UQ-dwZ"/>
+                <constraint firstItem="cFr-Bn-uNd" firstAttribute="centerY" secondItem="Ifx-9Y-eoH" secondAttribute="centerY" id="D7Z-GX-mR7"/>
+                <constraint firstItem="Ifx-9Y-eoH" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="K2x-71-Ool"/>
+                <constraint firstItem="jKP-hI-FV3" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="KIp-Tp-w6h"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="cFr-Bn-uNd" secondAttribute="trailing" id="MuJ-1T-GXU"/>
+                <constraint firstItem="jKP-hI-FV3" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="N3d-7V-ROE"/>
+                <constraint firstItem="cK0-UB-uhM" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" constant="10" id="NX1-Jq-e5T"/>
+                <constraint firstItem="pTD-CX-wKp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ODs-lb-IkT"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="cK0-UB-uhM" secondAttribute="trailing" constant="10" id="Tdl-jh-CW9"/>
+                <constraint firstItem="cK0-UB-uhM" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="Yck-by-U7h"/>
+                <constraint firstItem="pTD-CX-wKp" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="qLq-jT-Y4T"/>
+                <constraint firstItem="cK0-UB-uhM" firstAttribute="top" secondItem="cFr-Bn-uNd" secondAttribute="bottom" constant="20" id="wCs-t4-QCM"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <point key="canvasLocation" x="107.63358778625954" y="153.52112676056339"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Arrow back" width="42" height="42"/>
+        <image name="Arrow forward" width="42" height="42"/>
+    </resources>
+</document>

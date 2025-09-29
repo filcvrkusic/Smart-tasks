@@ -7,16 +7,8 @@
 
 import Foundation
 
+
 struct Task: Codable {
-    let id: String
-    let title: String
-    let description: String?
-    let priority: Int
-    let dueDate: Date?
-    let targetDate: Date
-    var status: TaskStatus = .unresolved
-    var comment: String?
-    
     enum TaskStatus: String, Codable {
         case unresolved = "Unresolved"
         case resolved = "Resolved"
@@ -31,6 +23,15 @@ struct Task: Codable {
         case dueDate = "DueDate"
         case targetDate = "TargetDate"
     }
+    
+    let id: String
+    let title: String
+    let description: String?
+    let priority: Int
+    let dueDate: Date?
+    let targetDate: Date
+    var status: TaskStatus = .unresolved
+    var comment: String?
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
