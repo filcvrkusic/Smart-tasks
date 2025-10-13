@@ -109,92 +109,28 @@ class TaskViewController: UIViewController {
     
     // MARK: - Configuration
     private func configureWithTask() {
-        taskTitleLabel.text = task.title
-        
-        if let description = task.description, !description.isEmpty {
-            commentLabel.text = description
-        } else {
-            commentLabel.text = "No description provided"
-        }
-        
-        if let dueDate = task.dueDate {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "MMM dd yyyy"
-            dueDateLabel.text = formatter.string(from: dueDate)
-            
-            let calendar = Calendar.current
-            let today = Date()
-            let components = calendar.dateComponents([.day], from: today, to: dueDate)
-            
-            if let daysLeft = components.day {
-                if daysLeft < 0 {
-                    daysLeftLabel.text = "Overdue"
-                } else {
-                    daysLeftLabel.text = "\(daysLeft)"
-                }
-            } else {
-                daysLeftLabel.text = "-"
-            }
-        } else {
-            dueDateLabel.text = "No due date"
-            daysLeftLabel.text = "-"
-        }
-        
-        configureUIForStatus()
-    }
-    
-    private func configureUIForStatus() {
-        switch task.status {
-        case .unresolved:
-            let softRed = UIColor.softRed()
-            taskTitleLabel.textColor = softRed
-            dueDateTitleLabel.textColor = softRed
-            dueDateLabel.textColor = softRed
-            daysLeftTitleLabel.textColor = softRed
-            daysLeftLabel.textColor = softRed
-            commentLabel.textColor = softRed
-            taskDetailLabel.textColor = softRed
-            
-            statusLabel.text = task.status.rawValue
-            statusLabel.textColor = UIColor.lightYellow()
-            
-            buttonStackView.isHidden = false
-            statusImageVIew.isHidden = true
-            
-        case .cantResolve:
-            let softRed = UIColor.softRed()
-            taskTitleLabel.textColor = softRed
-            dueDateTitleLabel.textColor = softRed
-            dueDateLabel.textColor = softRed
-            daysLeftTitleLabel.textColor = softRed
-            daysLeftLabel.textColor = softRed
-            commentLabel.textColor = softRed
-            statusLabel.textColor = softRed
-            taskDetailLabel.textColor = softRed
-            
-            statusLabel.text = task.status.rawValue
-            
-            buttonStackView.isHidden = true
-            statusImageVIew.isHidden = false
-            statusImageVIew.image = UIImage(named: "Unresolved sign")
-            
-        case .resolved:
-            let darkCyan = UIColor.darkCyan()
-            taskTitleLabel.textColor = darkCyan
-            dueDateTitleLabel.textColor = darkCyan
-            dueDateLabel.textColor = darkCyan
-            daysLeftTitleLabel.textColor = darkCyan
-            daysLeftLabel.textColor = darkCyan
-            commentLabel.textColor = darkCyan
-            statusLabel.textColor = darkCyan
-            taskDetailLabel.textColor = darkCyan
-            
-            statusLabel.text = task.status.rawValue
-            
-            buttonStackView.isHidden = true
-            statusImageVIew.isHidden = false
-            statusImageVIew.image = UIImage(named: "Resolved sign")
-        }
+        let displayModel = TaskDetailDisplayModel(task: task)
+        let statusStyle = displayModel.statusStyle
+
+        taskTitleLabel.text = displayModel.titleText
+        dueDateLabel.text = displayModel.dueDateText
+        daysLeftLabel.text = displayModel.daysLeftText
+        commentLabel.text = displayModel.commentText
+        statusLabel.text = displayModel.statusText
+
+        taskTitleLabel.textColor = statusStyle.primaryColor
+        dueDateTitleLabel.textColor = statusStyle.primaryColor
+        dueDateLabel.textColor = statusStyle.primaryColor
+        daysLeftTitleLabel.textColor = statusStyle.primaryColor
+        daysLeftLabel.textColor = statusStyle.primaryColor
+        commentLabel.textColor = statusStyle.primaryColor
+        taskDetailLabel.textColor = statusStyle.primaryColor
+
+        statusLabel.textColor = statusStyle.statusLabelColor
+
+        buttonStackView.isHidden = statusStyle.buttonStackHidden
+        statusImageVIew.isHidden = statusStyle.statusImageHidden
+        statusImageVIew.image = statusStyle.statusImage
     }
     
     // MARK: - Actions
